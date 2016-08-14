@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>raycast</Title>
+      <Shortcut>raycast</Shortcut>
+      <Description>3D raycast with out hit</Description>
+      <Author>Nothke</Author>
+
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>origin</ID>
+          <ToolTip>Ray origin position</ToolTip>
+          <Default>Vector3.zero</Default>
+        </Literal>
+
+        <Literal>
+          <ID>direction</ID>
+          <ToolTip>Ray direction</ToolTip>
+          <Default>Vector3.forward</Default>
+        </Literal>
+
+        <Literal>
+          <ID>distance</ID>
+          <ToolTip>Ray max distance</ToolTip>
+          <Default>Mathf.Infinity</Default>
+        </Literal>
+
+        <Literal>
+          <ID>hit</ID>
+          <ToolTip>RaycastHit name</ToolTip>
+          <Default>hit</Default>
+        </Literal>
+      </Declarations>
+      
+      <Code Language="CSharp">
+        <![CDATA[RaycastHit $hit$;
+        if (Physics.Raycast($origin$, $direction$, out $hit$, $distance$))
+        {
+          $end$
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
