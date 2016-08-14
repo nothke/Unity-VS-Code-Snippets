@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>timetest</Title>
+      <Shortcut>timetest</Shortcut>
+      <Description>Get time between two points in code, useful for calculating time operations take</Description>
+      <Author>Nothke</Author>
+
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+        <SnippetType>SurroundsWith</SnippetType>
+      </SnippetTypes>
+    </Header>
+
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>variable</ID>
+          <ToolTip>time float variable</ToolTip>
+          <Default>t</Default>
+        </Literal>
+        <Literal>
+          <ID>OperationName</ID>
+          <ToolTip>Operation Name</ToolTip>
+          <Default>Operation name</Default>
+        </Literal>
+
+      </Declarations>
+
+      <Code Language="CSharp">
+        <![CDATA[float $variable$ = Time.realtimeSinceStartup;
+        
+        $selected$ $end$
+
+        Debug.Log("$OperationName$ completed in: " + (Time.realtimeSinceStartup - $variable$));]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

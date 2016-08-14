@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>singleton</Title>
+      <Shortcut>singleton</Shortcut>
+      <Description>Create a quick simple singleton that can be called from anywhere</Description>
+      <Author>Nothke</Author>
+
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>ClassName</ID>
+          <ToolTip>Name of the class</ToolTip>
+          <Default>ClassName</Default>
+        </Literal>
+
+      </Declarations>
+
+      <Code Language="CSharp">
+        <![CDATA[public static $ClassName$ e;
+        void Awake() { e = this; }$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
