@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>paralleljob</Title>
+      <Shortcut>paralleljob</Shortcut>
+      <Description>Create a parallel job</Description>
+      <Author>Nothke</Author>
+
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>name</ID>
+          <ToolTip>Job name</ToolTip>
+          <Default>MyJob</Default>
+        </Literal>
+        
+      </Declarations>
+
+      <Code Language="CSharp">
+        <![CDATA[public struct $name$ : IJobParallelFor
+        {
+          $end$
+          public void Execute(int i)
+          {
+          }
+        }]]>
+      </Code>
+
+      <Imports>
+        <Import>
+          <Namespace>Unity.Jobs</Namespace>
+        </Import>
+        <Import>
+          <Namespace>Unity.Collections</Namespace>
+        </Import>
+      </Imports>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
