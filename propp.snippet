@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>propp</Title>
+      <Shortcut>propp</Shortcut>
+      <Description>Public property that gets component when needed</Description>
+      <Author>Nothke</Author>
+
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>var</ID>
+          <ToolTip>Type</ToolTip>
+          <Default>object</Default>
+        </Literal>
+
+        <Literal>
+          <ID>name</ID>
+          <ToolTip>Property and variable name</ToolTip>
+          <Default>variable</Default>
+        </Literal>
+        
+      </Declarations>
+
+      <Code Language="CSharp">
+        <![CDATA[$var$ _$name$;
+        $var$ $name$ { get { if (!_$name$) _$name$ = GetComponent<$var$>(); return _$name$; } }$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
