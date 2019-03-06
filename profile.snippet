@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>profile</Title>
+      <Shortcut>profile</Shortcut>
+      <Description>Profile a piece of code</Description>
+      <Author>Nothke</Author>
+
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+        <SnippetType>SurroundsWith</SnippetType>
+      </SnippetTypes>
+    </Header>
+
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>label</ID>
+          <ToolTip>Profiler label</ToolTip>
+          <Default>My Profiler Label</Default>
+        </Literal>
+
+      </Declarations>
+
+      <Code Language="CSharp">
+        <![CDATA[Profiler.BeginSample("$label$");
+        $selected$ $end$
+        Profiler.EndSample();]]>
+      </Code>
+
+      <Imports>
+        <Import>
+          <Namespace>UnityEngine.Profiling</Namespace>
+        </Import>
+      </Imports>
+    </Snippet>
+    
+  </CodeSnippet>
+</CodeSnippets>
