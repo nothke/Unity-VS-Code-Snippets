@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>ECS system with EntityCommandBuffer</Title>
+      <Shortcut>systemecb</Shortcut>
+      <Description>Create an ECS with an EntityCommandBuffer provided from one of the EntityCommandBufferSystems.</Description>
+      <Author>Nothke</Author>
+
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>name</ID>
+          <ToolTip>System name</ToolTip>
+          <Default>MyECB</Default>
+        </Literal>
+        <Literal>
+          <ID>command_buffer_system</ID>
+          <ToolTip>CommandBufferSystem</ToolTip>
+          <Default>EndSimulationEntityCommandBufferSystem</Default>
+        </Literal>
+
+      </Declarations>
+
+      <Code Language="CSharp">
+        <![CDATA[public class $name$System : JobComponentSystem
+        {
+            [BurstCompile]
+            struct SystemJob : IJobForEachWithEntity<$end$>
+            {
+                public EntityCommandBuffer.Concurrent ecb;
+            }
+        
+            $command_buffer_system$ commandBufferSystem;
+        
+            protected override void OnCreate()
+            {
+                commandBufferSystem = World.GetOrCreateSystem<$command_buffer_system$>();
+            }
+        
+            protected override JobHandle OnUpdate(JobHandle inputDeps)
+            {
+                var handle = new SystemJob()
+                {
+                    ecb = commandBufferSystem.CreateCommandBuffer().ToConcurrent()
+                }.Schedule(this, inputDeps);
+        
+                commandBufferSystem.AddJobHandleForProducer(handle);
+                return handle;
+            }
+        }]]>
+      </Code>
+
+      <Imports>
+        <Import>
+          <Namespace>Unity.Entities</Namespace>
+        </Import>
+        <Import>
+          <Namespace>Unity.Jobs</Namespace>
+        </Import>
+      </Imports>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
