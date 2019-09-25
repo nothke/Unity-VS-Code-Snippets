@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>ecssystem</Title>
+      <Shortcut>system</Shortcut>
+      <Description>Create an ECS system</Description>
+      <Author>Nothke</Author>
+
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>name</ID>
+          <ToolTip>System name</ToolTip>
+          <Default>My</Default>
+        </Literal>
+
+      </Declarations>
+
+      <Code Language="CSharp">
+        <![CDATA[public class $name$System : JobComponentSystem
+        {
+            [BurstCompile]
+            struct $name$SystemJob : IJobForEach<$end$>
+            {
+            }
+        
+            protected override JobHandle OnUpdate(JobHandle inputDeps)
+            {
+                var job = new $name$SystemJob() {};
+        
+                return job.Schedule(this, inputDeps);
+            }
+        }]]>
+      </Code>
+
+      <Imports>
+        <Import>
+          <Namespace>Unity.Entities</Namespace>
+        </Import>
+        <Import>
+          <Namespace>Unity.Jobs</Namespace>
+        </Import>
+      </Imports>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
