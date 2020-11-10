@@ -4,7 +4,7 @@
   <CodeSnippet Format="1.0.0">
     <Header>
       <Title>ECS system with EntityCommandBuffer</Title>
-      <Shortcut>systemecb</Shortcut>
+      <Shortcut>ecssystemecb</Shortcut>
       <Description>Create an ECS with an EntityCommandBuffer provided from one of the EntityCommandBufferSystems.</Description>
       <Author>Nothke</Author>
 
@@ -29,14 +29,8 @@
       </Declarations>
 
       <Code Language="CSharp">
-        <![CDATA[public class $name$System : JobComponentSystem
+        <![CDATA[public class $name$System : SystemBase
         {
-            [BurstCompile]
-            struct SystemJob : IJobForEachWithEntity<$end$>
-            {
-                public EntityCommandBuffer.Concurrent ecb;
-            }
-        
             $command_buffer_system$ commandBufferSystem;
         
             protected override void OnCreate()
@@ -44,15 +38,13 @@
                 commandBufferSystem = World.GetOrCreateSystem<$command_buffer_system$>();
             }
         
-            protected override JobHandle OnUpdate(JobHandle inputDeps)
+            protected override void OnUpdate()
             {
-                var handle = new SystemJob()
-                {
-                    ecb = commandBufferSystem.CreateCommandBuffer().ToConcurrent()
-                }.Schedule(this, inputDeps);
-        
-                commandBufferSystem.AddJobHandleForProducer(handle);
-                return handle;
+                var ecb = commandBufferSystem.CreateCommandBuffer().ToConcurrent();
+                
+                Entities.ForEach((ref $end$) => {
+                  
+                }).Schedule();
             }
         }]]>
       </Code>

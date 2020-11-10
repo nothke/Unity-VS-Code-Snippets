@@ -24,7 +24,8 @@
       </Declarations>
 
       <Code Language="CSharp">
-        <![CDATA[public struct $name$ : IJob
+        <![CDATA[[BurstCompile]
+        public struct $name$ : IJob
         {
           $end$
           public void Execute()
@@ -39,6 +40,9 @@
         </Import>
         <Import>
           <Namespace>Unity.Collections</Namespace>
+        </Import>
+        <Import>
+          <Namespace>Unity.Burst</Namespace>
         </Import>
       </Imports>
     </Snippet>

@@ -3,9 +3,9 @@
     xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
   <CodeSnippet Format="1.0.0">
     <Header>
-      <Title>ecssystem</Title>
-      <Shortcut>system</Shortcut>
-      <Description>Create an ECS system</Description>
+      <Title>ECS System with CDFE</Title>
+      <Shortcut>systemcdfe</Shortcut>
+      <Description>Create an ECS system with writeable ComponentDataFromEntity</Description>
       <Author>Nothke</Author>
 
       <SnippetTypes>
@@ -20,6 +20,11 @@
           <ToolTip>System name</ToolTip>
           <Default>My</Default>
         </Literal>
+        <Literal>
+          <ID>component</ID>
+          <ToolTip>CDFE component type</ToolTip>
+          <Default>ComponentData</Default>
+        </Literal>
 
       </Declarations>
 
@@ -27,13 +32,19 @@
         <![CDATA[public class $name$System : JobComponentSystem
         {
             [BurstCompile]
-            struct $name$SystemJob : IJobForEach<$end$>
+            struct SystemJob : IJobForEach<$end$>
             {
+                [NativeDisableParallelForRestriction]
+                public ComponentDataFromEntity<$component$> $component$CDFE;
             }
         
             protected override JobHandle OnUpdate(JobHandle inputDeps)
             {
-                var job = new $name$SystemJob() {};
+                var $component$CDFE = GetComponentDataFromEntity<$component$>();
+                
+                var job = new SystemJob() {
+                    $component$CDFE = $component$CDFE
+                };
         
                 return job.Schedule(this, inputDeps);
             }

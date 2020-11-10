@@ -24,7 +24,8 @@
       </Declarations>
 
       <Code Language="CSharp">
-        <![CDATA[public struct $name$ : IJobParallelFor
+        <![CDATA[[BurstCompile]
+        public struct $name$ : IJobParallelFor
         {
           $end$
           public void Execute(int i)
@@ -39,6 +40,9 @@
         </Import>
         <Import>
           <Namespace>Unity.Collections</Namespace>
+        </Import>
+        <Import>
+          <Namespace>Unity.Burst</Namespace>
         </Import>
       </Imports>
     </Snippet>
