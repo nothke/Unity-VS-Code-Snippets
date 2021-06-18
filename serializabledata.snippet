@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>ISerializableData</Title>
+      <Shortcut>serializabledata</Shortcut>
+      <Description>ISerializableData get/set</Description>
+      <Author>Nothke</Author>
+
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+
+    <Snippet>
+      <Declarations>
+        <Literal>
+        </Literal>
+      </Declarations>
+      
+      <Code Language="CSharp">
+        <![CDATA[#region Serialization
+		
+    public class Data : ISerializableData
+    {
+        public $end$
+    }
+
+    public ISerializableData SerializedData
+    {
+        get
+        {
+            return new Data
+            {
+
+            };
+        }
+
+        set
+        {
+            Data d = (Data)value;
+            
+
+        }
+    }
+	
+	#endregion]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
