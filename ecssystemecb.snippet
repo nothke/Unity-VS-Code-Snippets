@@ -40,11 +40,13 @@
         
             protected override void OnUpdate()
             {
-                var ecb = commandBufferSystem.CreateCommandBuffer().ToConcurrent();
+                var ecb = commandBufferSystem.CreateCommandBuffer().AsParallelWriter();
                 
-                Entities.ForEach((ref $end$) => {
+                Entities.ForEach((Entity entity, int entityInQueryIndex, ref $end$) => {
                   
                 }).Schedule();
+				
+                commandBufferSystem.AddJobHandleForProducer(Dependency);
             }
         }]]>
       </Code>
