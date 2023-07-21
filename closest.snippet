@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Closest Distance</Title>
+      <Shortcut>closest</Shortcut>
+      <Description>Closest distance calculating</Description>
+      <Author>Nothke</Author>
+
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+
+    <Snippet>
+      <Declarations>
+        <Literal>
+        </Literal>
+
+      </Declarations>
+
+      <Code Language="CSharp">
+        <![CDATA[Vector3 current = Input.mousePosition;
+        float closestDistanceSq = Mathf.Infinity;
+        Object closest = null;
+        const float minRange = 100f;
+
+        foreach (var item in items)
+        {
+            Vector3 pos = item.transform.position;
+            float distanceSq = Vector3.SqrMagnitude(pos - current);
+
+            if (distanceSq < closestDistanceSq &&
+                distanceSq < (minRange * minRange))
+            {
+                closestDistanceSq = distanceSq;
+                closest = item;
+            }
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
